@@ -8,7 +8,7 @@ shiftview(const Arg *arg)
 {
 	Arg a;
 	Client *c;
-	unsigned visible = 0;
+	unsigned visible = 1; //it used to be initiated as 0 originally
 	int i = arg->i;
 	int count = 0;
 	int nextseltags, curseltags = selmon->tagset[selmon->seltags];
@@ -21,11 +21,11 @@ shiftview(const Arg *arg)
 			nextseltags = curseltags >> (- i) | (curseltags << (LENGTH(tags) + i));
 
                 // Check if tag is visible
-		for (c = selmon->clients; c && !visible; c = c->next)
+/*		for (c = selmon->clients; c && !visible; c = c->next)
 			if (nextseltags & c->tags) {
 				visible = 1;
 				break;
-			}
+			}*/
 		i += arg->i;
 	} while (!visible && ++count < 10);
 
@@ -40,7 +40,7 @@ shifttag(const Arg *arg)
 {
 	Arg a;
 	Client *c;
-	unsigned visible = 0;
+	unsigned visible = 1; //it used to be initiated as 0 originally
 	int i = arg->i;
 	int count = 0;
 	int nextseltags, curseltags = selmon->tagset[selmon->seltags];
@@ -53,11 +53,11 @@ shifttag(const Arg *arg)
 			nextseltags = curseltags >> (- i) | (curseltags << (LENGTH(tags) + i));
 
                 // Check if tag is visible
-		for (c = selmon->clients; c && !visible; c = c->next)
+/*		for (c = selmon->clients; c && !visible; c = c->next)
 			if (nextseltags & c->tags) {
 				visible = 1;
 				break;
-			}
+			}*/
 		i += arg->i;
 	} while (!visible && ++count < 10);
 
